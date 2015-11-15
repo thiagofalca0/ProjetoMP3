@@ -1,18 +1,6 @@
-TITLE   8086 Code Template (for EXE file)
-
-;       AUTHOR          emu8086
-;       DATE            ?
-;       VERSION         1.00
-;       FILE            ?.ASM
-
-; 8086 Code Template
-
-; Directive to make EXE output:
-       #MAKE_EXE#
-
 DSEG    SEGMENT 'DATA'
 
-; TODO: add your data here!!!!
+; add DATA
 
 DSEG    ENDS
 
@@ -37,24 +25,20 @@ START   PROC    FAR
  	MOV     ES, AX
 
 ; initialization
-	MOV DX, 2070h
+	MOV DX, 2040h
 	MOV AL, 00h
 	OUT DX, AL
 	MOV DX, 2080h
 	OUT DX, AL	
 
 NEXT:	
-	MOV DX, 2080h ; input data from switches
+	MOV DX, 2080h ; input data entrada dos buttons
 	IN  AX, DX    ; 16-bit input
 	
-	MOV DX, 2070h ; output data to LEDs
+	MOV DX, 2040h ; output data / saida para ASCII LCD display
 	OUT DX, AL
 
 	JMP NEXT ; infinit loop
-
-
-
-
 
 
 ; return to operating system:
